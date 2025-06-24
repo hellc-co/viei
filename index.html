@@ -101,6 +101,13 @@
 	    border-left: 4px solid #2b9347;
             margin-bottom: 20px;
         }
+
+	.gauge-container {
+    		display: flex;
+    		flex-direction: column;
+    		align-items: center;
+   		margin: 20px 0;
+	}
         
         .question-card {
             background: white;
@@ -187,12 +194,12 @@
             
             <!-- Question 1 -->
             <div class="question-card">
-                <h4>1. How does your organization currently track invoice ageing?</h4>
+                <h4>1. How does your organization currently track invoice aging?</h4>
                 <select id="q1" onchange="updateChart()">
-                    <option value="0">We Don't</option>
-                    <option value="1" selected>In App ageing tracking</option>
-                    <option value="2">Ageing tracked by user and department</option>
-                    <option value="3">Reporting / alerting on ageing based on days</option>
+                    <option value="0">0 - We Don't</option>
+                    <option value="1" selected>1 - In App aging tracking</option>
+                    <option value="2">2 - Aging tracked by user and department</option>
+                    <option value="3">3 - Reporting / alerting on aging based on days</option>
                 </select>
                 <div class="score-display">Score: <span id="score1">1</span></div>
             </div>
@@ -201,10 +208,10 @@
             <div class="question-card">
                 <h4>2. Which best describes your organization's invoice approval process?</h4>
                 <select id="q2" onchange="updateChart()">
-                    <option value="0">None</option>
-                    <option value="1" selected>Informal approval processes with minimal KPI tracking</option>
-                    <option value="2">Formal approval hierarchies with approval limits</option>
-                    <option value="3">Dynamic approval workflows with continuous monitoring and Early Pay</option>
+                    <option value="0">0 - None</option>
+                    <option value="1" selected>1 - Informal approval processes with minimal KPI tracking</option>
+                    <option value="2">2 - Formal approval hierarchies with approval limits</option>
+                    <option value="3">3 - Dynamic approval workflows with continuous monitoring and Early Pay</option>
                 </select>
                 <div class="score-display">Score: <span id="score2">2</span></div>
             </div>
@@ -213,10 +220,10 @@
             <div class="question-card">
                 <h4>3. How does your organization currently track supplier pricing?</h4>
                 <select id="q3" onchange="updateChart()">
-                    <option value="0">We Don't</option>
-                    <option value="1" selected>Reporting from invoice coding</option>
-                    <option value="2">Pricebook</option>
-                    <option value="3">Electronic Field ticketing with pricebook</option>
+                    <option value="0">0 - We Don't</option>
+                    <option value="1" selected>1 - Reporting from invoice coding</option>
+                    <option value="2">2- Pricebook</option>
+                    <option value="3">3- Electronic Field ticketing with pricebook</option>
                 </select>
                 <div class="score-display">Score: <span id="score3">0</span></div>
             </div>
@@ -225,10 +232,10 @@
             <div class="question-card">
                 <h4>4. Which integration design is set up for your ERP with invoices?</h4>
                 <select id="q4" onchange="updateChart()">
-                    <option value="0">None</option>
-                    <option value="1" selected>Manual / One way integration for invoice(s) upload to ERP</option>
-                    <option value="2">Two-way ERP integration</option>
-                    <option value="3">Fully integrated ERP and master data</option>
+                    <option value="0">0 - Manaul Process or CSV upload</option>
+                    <option value="1" selected>1 - One way integration for invoice(s) upload to ERP</option>
+                    <option value="2">2 - Two-way ERP integration</option>
+                    <option value="3">3 - Fully integrated ERP and master data</option>
                 </select>
                 <div class="score-display">Score: <span id="score4">1</span></div>
             </div>
@@ -242,10 +249,10 @@
             <div class="question-card">
                 <h4>5. Which best describes your organization's invoice dispute process?</h4>
                 <select id="q5" onchange="updateChart()">
-                    <option value="0">None</option>
-                    <option value="1" selected>Manual disputes by a few users</option>
-                    <option value="2">Dispute tracking by user and department</option>
-                    <option value="3">Fully automated workflows with exception / duplicate / fraud handling</option>
+                    <option value="0">0 -None</option>
+                    <option value="1" selected>1- Manual disputes by a few users</option>
+                    <option value="2">2- Dispute tracking by user and department</option>
+                    <option value="3">3- Fully automated workflows with exception / duplicate / fraud handling</option>
                 </select>
                 <div class="score-display">Score: <span id="score5">2</span></div>
             </div>
@@ -254,10 +261,10 @@
             <div class="question-card">
                 <h4>6. How many of your suppliers are onboarded for electronic invoicing?</h4>
                 <select id="q6" onchange="updateChart()">
-                    <option value="0">We Don't</option>
-                    <option value="1" selected>&lt;20% suppliers onboarded</option>
-                    <option value="2">20 to 90% supplier onboarding</option>
-                    <option value="3">&gt;90% supplier adoption</option>
+                    <option value="0">0- We Don't</option>
+                    <option value="1" selected>1- &lt;20% suppliers onboarded</option>
+                    <option value="2">2- 20 to 90% supplier onboarding</option>
+                    <option value="3">&gt;3- 90% supplier adoption</option>
                 </select>
                 <div class="score-display">Score: <span id="score6">2</span></div>
             </div>
@@ -266,10 +273,10 @@
             <div class="question-card">
                 <h4>7. What invoice reporting is currently in place for your organization?</h4>
                 <select id="q7" onchange="updateChart()">
-                    <option value="0" selected>None</option>
-                    <option value="1">Standard reporting dashboard</option>
-                    <option value="2">Reporting for JIB accounting / invoice splits</option>
-                    <option value="3">Instant analyst companion tool (AI-assisted)</option>
+                    <option value="0" selected>0 - None</option>
+                    <option value="1">1 - Standard reporting dashboard</option>
+                    <option value="2">2 - Reporting for JIB accounting / invoice splits</option>
+                    <option value="3">3 - Instant analyst companion tool (AI-assisted)</option>
                 </select>
                 <div class="score-display">Score: <span id="score7">1</span></div>
             </div>
@@ -278,10 +285,10 @@
             <div class="question-card">
                 <h4>8. How does your organization manage suppliers certs and MSAs?</h4>
                 <select id="q8" onchange="updateChart()">
-                    <option value="0">We Don't</option>
-                    <option value="1" selected>Manual tracking of approved supplier management</option>
-                    <option value="2">Tools for approved supplier management</option>
-                    <option value="3">Supplier management tool integration</option>
+                    <option value="0">0 - We Don't</option>
+                    <option value="1" selected>1 - Manual tracking of approved supplier management</option>
+                    <option value="2">2 - Tools for approved supplier management</option>
+                    <option value="3">3- Supplier management tool integration</option>
                 </select>
                 <div class="score-display">Score: <span id="score8">1</span></div>
             </div>
@@ -297,7 +304,12 @@
             <!-- Summary Section -->
             <div class="summary">
                 <h3>Assessment Summary</h3>
-                <p><strong>Total Score:</strong> <span id="totalScore">10</span> / 24</p>
+                    <div class="gauge-container">
+  			<canvas id="scoreGauge" width="200" height="100"></canvas>
+  			<p style="text-align: center; font-weight: bold; color: #2b9347;">
+   			 Score: <span id="gaugeScore">10</span> / 24
+  			</p>
+		   </div>
                 <p><strong>Maturity Level:</strong> <span id="maturityLevel">Beginner</span></p>
                 <div id="recommendations"></div>
             </div>
@@ -315,7 +327,7 @@
                 type: 'radar',
                 data: {
                     labels: [
-                        'Ageing Tracking',
+                        'Aging Tracking',
                         'Approval Workflows', 
                         'Pricing Controls',
                         'ERP Integration',
@@ -366,7 +378,46 @@
                 }
             });
         }
-        
+        // gaguge
+let gaugeChart;
+
+function initGauge(score = 10) {
+    const ctx = document.getElementById('scoreGauge').getContext('2d');
+    const maxScore = 24;
+
+    const data = {
+        labels: ['Score', 'Remaining'],
+        datasets: [{
+            data: [score, maxScore - score],
+            backgroundColor: ['#2b9347', '#e0e0e0'],
+            hoverBackgroundColor: ['#2b9347', '#e0e0e0'],
+            borderWidth: 0,
+            circumference: 180,
+            rotation: 270,
+            cutout: '70%'
+        }]
+    };
+
+    const options = {
+        responsive: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: { enabled: false }
+        }
+    };
+
+    if (gaugeChart) gaugeChart.destroy();
+
+    gaugeChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: options
+    });
+
+    // Update the text label below it
+    document.getElementById('gaugeScore').textContent = score;
+}
+
         // Update chart and calculations
         function updateChart() {
             const scores = [];
@@ -388,7 +439,7 @@
             
             // Calculate total score
             const totalScore = scores.reduce((sum, score) => sum + score, 0);
-            document.getElementById('totalScore').textContent = totalScore;
+            initGauge(totalScore); // Updates the gauge
             
             // Determine maturity level
             let maturityLevel;
@@ -408,7 +459,7 @@
         // Generate personalized recommendations
         function generateRecommendations(scores) {
             const areas = [
-                'Ageing Tracking', 'Approval Workflows', 'Pricing Controls',
+                'Aging Tracking', 'Approval Workflows', 'Pricing Controls',
                 'ERP Integration', 'Disputes Management', 'Supplier Engagement',
                 'Reporting', 'Supplier Management'
             ];
