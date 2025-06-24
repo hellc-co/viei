@@ -24,7 +24,7 @@
 }
 
 .header-content {
-    max-width: 1400px;
+    /* max-width: 1400px;  remmoved to get the header more respoosive*/
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
@@ -71,13 +71,15 @@
 }
 
         
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            gap: 20px;
-        }
+       .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-sizing: border-box;
+}
         
         .questions-container {
             flex: 1;
@@ -167,12 +169,14 @@ text-align: center;
 </head>
 <body>
     <div class="header">
+    <div class="container">
     <div class="header-content">
         <img src="https://velocity-insight.com/wp-content/uploads/2021/08/VI_LOGO_large.png" alt="Velocity Insight Logo">
         <div class="header-text">
             <h1>From Chaos to Zen</h1>
             <p>Interactive Electronic Invoice Maturity Framework</p>
         </div>
+     </div>
     </div>
 </div>
 
