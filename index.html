@@ -381,56 +381,9 @@
         // gaguge
 let gaugeChart;
 
-
-
 function initGauge(score = 10) {
-    const maxScore = 24;
-    const percent = score / maxScore;
-
     const ctx = document.getElementById('scoreGauge').getContext('2d');
-
-    // Determine how much of each color to show
-    const redEnd = Math.min(percent, 1 / 3);
-    const yellowEnd = Math.min(Math.max(percent - redEnd, 0), 1 / 3);
-    const greenEnd = Math.max(percent - (redEnd + yellowEnd), 0);
-
-    // Convert to actual data values (based on 24 total)
-    const red = redEnd * maxScore;
-    const yellow = yellowEnd * maxScore;
-    const green = greenEnd * maxScore;
-    const remaining = maxScore - (red + yellow + green);
-
-    const data = {
-        datasets: [{
-            data: [red, yellow, green, remaining],
-            backgroundColor: ['#e63946', '#ffca3a', '#2b9347', '#e0e0e0'],
-            borderWidth: 0,
-            circumference: 180,
-            rotation: 270,
-            cutout: '70%'
-        }]
-    };
-
-    const options = {
-        responsive: false,
-        plugins: {
-            legend: { display: false },
-            tooltip: { enabled: false }
-        }
-    };
-
-    if (gaugeChart) gaugeChart.destroy();
-
-    gaugeChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-        options: options
-    });
-
-    // Update the numeric score display
-    document.getElementById('gaugeScore').textContent = score;
-}
-
+    const maxScore = 24;
 
     const data = {
         labels: ['Score', 'Remaining'],
