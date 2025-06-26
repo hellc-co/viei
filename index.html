@@ -156,6 +156,7 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     border-left: 4px solid #2b9347;
+    margin-bottom: 20px;
 }
         
 .summary h3 {
@@ -186,101 +187,130 @@ h2 {
 </div>
 
     <div class="container">
-        <!-- Column 1: Size Questions ---->
+        <!-- Column 1: First Four In -->
         <div class="questions-container">
-            <h2>Invoice Size Questions</h2>
+            <h2>First Four In</h2>
             
             <!-- Question 1 -->
             <div class="question-card">
-                <h4>1. Which best describes your organization's invoice approval process?</h4>
+                <h4>1. How does your organization currently track invoice aging?</h4>
                 <select id="q1" onchange="updateChart()">
-                    <option value="0">0 - None</option>
-                    <option value="1" selected>1 - Informal approval processes with minimal KPI tracking</option>
-                    <option value="2">2 - Formal approval hierarchies with approval limits</option>
-                    <option value="3">3 - Dynamic approval workflows with continuous monitoring and Early Pay</option>
+                    <option value="0">0 - We Don't</option>
+                    <option value="1" selected>1 - In App aging tracking</option>
+                    <option value="2">2 - Aging tracked by user and department</option>
+                    <option value="3">3 - Reporting / alerting on aging based on days</option>
                 </select>
                 <div class="score-display">Score: <span id="score1">1</span></div>
             </div>
 
             <!-- Question 2 -->
             <div class="question-card">
-                <h4>2. How does your organization currently track supplier pricing?</h4>
+                <h4>2. Which best describes your organization's invoice approval process?</h4>
                 <select id="q2" onchange="updateChart()">
+                    <option value="0">0 - None</option>
+                    <option value="1" selected>1 - Informal approval processes with minimal KPI tracking</option>
+                    <option value="2">2 - Formal approval hierarchies with approval limits</option>
+                    <option value="3">3 - Dynamic approval workflows with continuous monitoring and Early Pay</option>
+                </select>
+                <div class="score-display">Score: <span id="score2">2</span></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card">
+                <h4>3. How does your organization currently track supplier pricing?</h4>
+                <select id="q3" onchange="updateChart()">
                     <option value="0">0 - We Don't</option>
                     <option value="1" selected>1 - Reporting from invoice coding</option>
                     <option value="2">2 - Pricebook</option>
                     <option value="3">3 - Electronic Field ticketing with pricebook</option>
                 </select>
-                <div class="score-display">Score: <span id="score2">1</span></div>
+                <div class="score-display">Score: <span id="score3">0</span></div>
             </div>
 
-            <!-- Question 3 -->
+            <!-- Question 4 -->
             <div class="question-card">
-                <h4>3. Which integration design is set up for your ERP with invoices?</h4>
-                <select id="q3" onchange="updateChart()">
+                <h4>4. Which integration design is set up for your ERP with invoices?</h4>
+                <select id="q4" onchange="updateChart()">
                     <option value="0">0 - Manual Process or CSV upload</option>
                     <option value="1" selected>1 - One way integration for invoice(s) upload to ERP</option>
                     <option value="2">2 - Two-way ERP integration</option>
                     <option value="3">3 - Fully integrated ERP and master data</option>
                 </select>
-                <div class="score-display">Score: <span id="score3">1</span></div>
+                <div class="score-display">Score: <span id="score4">1</span></div>
+            </div>
+        </div>
+
+        <!-- Column 2: Last Four Out -->
+        <div class="questions-container">
+            <h2>Last Four Out</h2>
+            
+            <!-- Question 5 -->
+            <div class="question-card">
+                <h4>5. Which best describes your organization's invoice dispute process?</h4>
+                <select id="q5" onchange="updateChart()">
+                    <option value="0">0 - None</option>
+                    <option value="1" selected>1 - Manual disputes by a few users</option>
+                    <option value="2">2 - Dispute tracking by user and department</option>
+                    <option value="3">3 - Fully automated workflows with exception / duplicate / fraud handling</option>
+                </select>
+                <div class="score-display">Score: <span id="score5">2</span></div>
             </div>
 
-            <!-- Question 4 -->
+            <!-- Question 6 -->
             <div class="question-card">
-                <h4>4. How many of your suppliers are onboarded for electronic invoicing?</h4>
-                <select id="q4" onchange="updateChart()">
+                <h4>6. How many of your suppliers are onboarded for electronic invoicing?</h4>
+                <select id="q6" onchange="updateChart()">
                     <option value="0">0 - We Don't</option>
                     <option value="1" selected>1 - &lt;20% suppliers onboarded</option>
                     <option value="2">2 - 20 to 90% supplier onboarding</option>
                     <option value="3">3 - &gt;90% supplier adoption</option>
                 </select>
-                <div class="score-display">Score: <span id="score4">1</span></div>
+                <div class="score-display">Score: <span id="score6">2</span></div>
             </div>
 
-            <!-- Question 5 -->
+            <!-- Question 7 -->
             <div class="question-card">
-                <h4>5. What invoice reporting is currently in place for your organization?</h4>
-                <select id="q5" onchange="updateChart()">
-                    <option value="0">0 - None</option>
-                    <option value="1" selected>1 - Standard reporting dashboard</option>
+                <h4>7. What invoice reporting is currently in place for your organization?</h4>
+                <select id="q7" onchange="updateChart()">
+                    <option value="0" selected>0 - None</option>
+                    <option value="1">1 - Standard reporting dashboard</option>
                     <option value="2">2 - Reporting for JIB accounting / invoice splits</option>
                     <option value="3">3 - Instant analyst companion tool (AI-assisted)</option>
                 </select>
-                <div class="score-display">Score: <span id="score5">1</span></div>
+                <div class="score-display">Score: <span id="score7">1</span></div>
             </div>
 
-            <!-- Question 6 -->
+            <!-- Question 8 -->
             <div class="question-card">
-                <h4>6. How does your organization manage suppliers certs and MSAs?</h4>
-                <select id="q6" onchange="updateChart()">
+                <h4>8. How does your organization manage suppliers certs and MSAs?</h4>
+                <select id="q8" onchange="updateChart()">
                     <option value="0">0 - We Don't</option>
                     <option value="1" selected>1 - Manual tracking of approved supplier management</option>
                     <option value="2">2 - Tools for approved supplier management</option>
                     <option value="3">3 - Supplier management tool integration</option>
                 </select>
-                <div class="score-display">Score: <span id="score6">1</span></div>
+                <div class="score-display">Score: <span id="score8">1</span></div>
             </div>
         </div>
 
-        <!-- Column 2: Chart and Summary -->
+        <!-- Column 3: Assessment Summary and Chart -->
         <div class="chart-summary-container">
+            <!-- Assessment Summary - Now Above Chart -->
+            <div class="summary">
+                <h3>Assessment Summary</h3>
+                <div class="gauge-container">
+                    <canvas id="scoreGauge" width="200" height="100"></canvas>
+                    <p style="text-align: center; font-weight: bold; color: #2b9347;">
+                        Score: <span id="gaugeScore">10</span> / 24
+                    </p>
+                </div>
+                <p><strong>Maturity Level:</strong> <span id="maturityLevel">Better</span></p>
+                <div id="recommendations"></div>
+            </div>
+            
             <div class="chart-container">
                 <h3>Maturity Assessment Scorecard</h3>
                 <canvas id="radarChart"></canvas>
-            </div>
-            
-            <!-- Summary Section -->
-            <div class="summary">
-                <h3>Assessment Summary</h3>
-                    <div class="gauge-container">
-  			<canvas id="scoreGauge" width="200" height="100"></canvas>
-  			<p style="text-align: center; font-weight: bold; color: #2b9347;">
-   			 Score: <span id="gaugeScore">6</span> / 18
-  			</p>
-		   </div>
-                <p><strong>Maturity Level:</strong> <span id="maturityLevel">Chaos</span></p>
-                <div id="recommendations"></div>
             </div>
         </div>
     </div>
@@ -296,16 +326,18 @@ h2 {
                 type: 'radar',
                 data: {
                     labels: [
+                        'Aging Tracking',
                         'Approval Workflows', 
                         'Pricing Controls',
                         'ERP Integration',
+                        'Disputes Management',
                         'Supplier Engagement',  
                         'Reporting',            
                         'Supplier Management'
                     ],
                     datasets: [{
                         label: 'Current Maturity',
-                        data: [1, 1, 1, 1, 1, 1],  
+                        data: [1, 2, 0, 1, 2, 2, 1, 1],  
                         backgroundColor: 'rgba(43, 147, 71, 0.2)',
                         borderColor: 'rgba(43, 147, 71, 1)',
                         borderWidth: 2,
@@ -319,7 +351,7 @@ h2 {
                     responsive: true,
                     maintainAspectRatio: false,
                     aspectRatio: 1,
-		    scales: {
+                    scales: {
                         r: {
                             beginAtZero: true,
                             max: 3,
@@ -346,52 +378,62 @@ h2 {
             });
         }
         
-        // gauge
-let gaugeChart;
+        // Color-coded gauge with custom colors
+        let gaugeChart;
 
-function initGauge(score = 6) {
-    const ctx = document.getElementById('scoreGauge').getContext('2d');
-    const maxScore = 18;
+        function initGauge(score = 10) {
+            const ctx = document.getElementById('scoreGauge').getContext('2d');
+            const maxScore = 24;
 
-    const data = {
-        labels: ['Score', 'Remaining'],
-        datasets: [{
-            data: [score, maxScore - score],
-            backgroundColor: ['#2b9347', '#e0e0e0'],
-            hoverBackgroundColor: ['#2b9347', '#e0e0e0'],
-            borderWidth: 0,
-            circumference: 180,
-            rotation: 270,
-            cutout: '70%'
-        }]
-    };
+            // Determine color based on score ranges
+            let gaugeColor;
+            if (score <= 6) {
+                gaugeColor = '#ff6900'; // Red for 0-6 (Chaos)
+            } else if (score <= 12) {
+                gaugeColor = '#fcb900'; // Yellow for 7-12 (Better)
+            } else {
+                gaugeColor = '#2b9347'; // Green for 13+ (Zen)
+            }
 
-    const options = {
-        responsive: false,
-        plugins: {
-            legend: { display: false },
-            tooltip: { enabled: false }
+            const data = {
+                labels: ['Score', 'Remaining'],
+                datasets: [{
+                    data: [score, maxScore - score],
+                    backgroundColor: [gaugeColor, '#e0e0e0'],
+                    hoverBackgroundColor: [gaugeColor, '#e0e0e0'],
+                    borderWidth: 0,
+                    circumference: 180,
+                    rotation: 270,
+                    cutout: '70%'
+                }]
+            };
+
+            const options = {
+                responsive: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            };
+
+            if (gaugeChart) gaugeChart.destroy();
+
+            gaugeChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: options
+            });
+
+            // Update the text label below it
+            document.getElementById('gaugeScore').textContent = score;
         }
-    };
-
-    if (gaugeChart) gaugeChart.destroy();
-
-    gaugeChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-        options: options
-    });
-
-    // Update the text label below it
-    document.getElementById('gaugeScore').textContent = score;
-}
 
         // Update chart and calculations
         function updateChart() {
             const scores = [];
             const scoreElements = [];
             
-            for (let i = 1; i <= 6; i++) {
+            for (let i = 1; i <= 8; i++) {
                 const select = document.getElementById(`q${i}`);
                 const score = parseInt(select.value);
                 scores.push(score);
@@ -407,13 +449,13 @@ function initGauge(score = 6) {
             
             // Calculate total score
             const totalScore = scores.reduce((sum, score) => sum + score, 0);
-            initGauge(totalScore); // Updates the gauge
+            initGauge(totalScore); // Updates the gauge with color coding
             
             // Determine maturity level
             let maturityLevel;
-            if (totalScore <= 6) {
+            if (totalScore <= 8) {
                 maturityLevel = 'Chaos';
-            } else if (totalScore <= 12) {
+            } else if (totalScore <= 16) {
                 maturityLevel = 'Better';
             } else {
                 maturityLevel = 'Zen';
@@ -427,8 +469,8 @@ function initGauge(score = 6) {
         // Generate personalized recommendations
         function generateRecommendations(scores) {
             const areas = [
-                'Approval Workflows', 'Pricing Controls',
-                'ERP Integration', 'Supplier Engagement',
+                'Aging Tracking', 'Approval Workflows', 'Pricing Controls',
+                'ERP Integration', 'Disputes Management', 'Supplier Engagement',
                 'Reporting', 'Supplier Management'
             ];
             
