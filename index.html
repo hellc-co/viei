@@ -309,7 +309,7 @@
                         Score: <span id="gaugeScore">6</span> / 18
                     </p>
                 </div>
-                <p><strong>Maturity Level:</strong> <span id="maturityLevel">Better</span></p>
+                <p><strong>Maturity Level:</strong> <span id="maturityLevel">Efficient</span></p>
                 <div id="recommendations"></div>
             </div>
             
@@ -361,7 +361,7 @@
                             ticks: {
                                 stepSize: 1,
                                 callback: function(value) {
-                                    const levels = ['None', 'Chaos', 'Better', 'Zen'];
+                                    const levels = ['None', 'Chaos', 'Efficient', 'Zen'];
                                     return levels[value] || value;
                                 }
                             },
@@ -454,7 +454,7 @@
             if (totalScore <= 6) {
                 maturityLevel = 'Chaos';
             } else if (totalScore <= 12) {
-                maturityLevel = 'Better';
+                maturityLevel = 'Efficient';
             } else {
                 maturityLevel = 'Zen';
             }
