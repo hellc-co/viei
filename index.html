@@ -190,23 +190,13 @@
     <div class="container">
         <!-- Column 1: First Four In -->
         <div class="questions-container">
-            <h2>First Four In</h2>
+            <h2>First Three In</h2>
             
+            
+
             <!-- Question 1 -->
             <div class="question-card">
-                <h4>1. How does your organization currently track invoice aging?</h4>
-                <select id="q1" onchange="updateChart()">
-                    <option value="0">0 - We Don't</option>
-                    <option value="1" selected>1 - In App aging tracking</option>
-                    <option value="2">2 - Aging tracked by user and department</option>
-                    <option value="3">3 - Reporting / alerting on aging based on days</option>
-                </select>
-                <div class="score-display">Score: <span id="score1">1</span></div>
-            </div>
-
-            <!-- Question 2 -->
-            <div class="question-card">
-                <h4>2. Which best describes your organization's invoice approval process?</h4>
+                <h4>1. Which best describes your organization's invoice approval process?</h4>
                 <select id="q2" onchange="updateChart()">
                     <option value="0">0 - None</option>
                     <option value="1" selected>1 - Informal approval processes with minimal KPI tracking</option>
@@ -216,9 +206,9 @@
                 <div class="score-display">Score: <span id="score2">2</span></div>
             </div>
 
-            <!-- Question 3 - Now Pricing Controls -->
+            <!-- Question 2 - Now Pricing Controls -->
             <div class="question-card">
-                <h4>3. How does your organization currently track supplier pricing?</h4>
+                <h4>2. How does your organization currently track supplier pricing?</h4>
                 <select id="q3" onchange="updateChart()">
                     <option value="0">0 - We Don't</option>
                     <option value="1" selected>1 - Reporting from invoice coding</option>
@@ -228,9 +218,9 @@
                 <div class="score-display">Score: <span id="score3">0</span></div>
             </div>
 
-            <!-- Question 4 -->
+            <!-- Question 3 -->
             <div class="question-card">
-                <h4>4. Which integration design is set up for your ERP with invoices?</h4>
+                <h4>3. Which integration design is set up for your ERP with invoices?</h4>
                 <select id="q4" onchange="updateChart()">
                     <option value="0">0 - Manaul Process or CSV upload</option>
                     <option value="1" selected>1 - One way integration for invoice(s) upload to ERP</option>
@@ -243,23 +233,13 @@
 
         <!-- Column 2: Last Four Out -->
         <div class="questions-container">
-            <h2>Last Four Out</h2>
+            <h2>Last Three Out</h2>
             
-            <!-- Question 5 - Now Disputes Management -->
-            <div class="question-card">
-                <h4>5. Which best describes your organization's invoice dispute process?</h4>
-                <select id="q5" onchange="updateChart()">
-                    <option value="0">0 - None</option>
-                    <option value="1" selected>1 - Manual disputes by a few users</option>
-                    <option value="2">2 - Dispute tracking by user and department</option>
-                    <option value="3">3 - Fully automated workflows with exception / duplicate / fraud handling</option>
-                </select>
-                <div class="score-display">Score: <span id="score5">2</span></div>
-            </div>
+         
 
-            <!-- Question 6 - Supplier Engagement -->
+            <!-- Question 4 - Supplier Engagement -->
             <div class="question-card">
-                <h4>6. How many of your suppliers are onboarded for electronic invoicing?</h4>
+                <h4>4. How many of your suppliers are onboarded for electronic invoicing?</h4>
                 <select id="q6" onchange="updateChart()">
                     <option value="0">0 - We Don't</option>
                     <option value="1" selected>1 - &lt;20% suppliers onboarded</option>
@@ -269,9 +249,9 @@
                 <div class="score-display">Score: <span id="score6">2</span></div>
             </div>
 
-            <!-- Question 7 - Reporting -->
+            <!-- Question 5 - Reporting -->
             <div class="question-card">
-                <h4>7. What invoice reporting is currently in place for your organization?</h4>
+                <h4>5. What invoice reporting is currently in place for your organization?</h4>
                 <select id="q7" onchange="updateChart()">
                     <option value="0" selected>0 - None</option>
                     <option value="1">1 - Standard reporting dashboard</option>
@@ -281,9 +261,9 @@
                 <div class="score-display">Score: <span id="score7">1</span></div>
             </div>
 
-            <!-- Question 8 -->
+            <!-- Question 6 -->
             <div class="question-card">
-                <h4>8. How does your organization manage suppliers certs and MSAs?</h4>
+                <h4>6. How does your organization manage suppliers certs and MSAs?</h4>
                 <select id="q8" onchange="updateChart()">
                     <option value="0">0 - We Don't</option>
                     <option value="1" selected>1 - Manual tracking of approved supplier management</option>
@@ -303,7 +283,7 @@
                     <div class="gauge-container">
   			<canvas id="scoreGauge" width="200" height="100"></canvas>
   			<p style="text-align: center; font-weight: bold; color: #2b9347;">
-   			 Score: <span id="gaugeScore">10</span> / 24
+   			 Score: <span id="gaugeScore">10</span> / 18
   			</p>
 		   </div>
                 <p><strong>Maturity Level:</strong> <span id="maturityLevel">Beginner</span></p>
@@ -328,18 +308,16 @@
                 type: 'radar',
                 data: {
                     labels: [
-                        'Aging Tracking',
-                        'Approval Workflows', 
+                        'Workflows', 
                         'Pricing Controls',
                         'ERP Integration',
-                        'Disputes Management',
                         'Supplier Engagement',  
                         'Reporting',            
                         'Supplier Management'
                     ],
                     datasets: [{
                         label: 'Current Maturity',
-                        data: [1, 2, 0, 1, 2, 2, 1, 1],  
+                        data: [2, 0, 1, 2, 1, 1],  
                         backgroundColor: 'rgba(43, 147, 71, 0.2)',
                         borderColor: 'rgba(43, 147, 71, 1)',
                         borderWidth: 2,
