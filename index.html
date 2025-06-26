@@ -90,7 +90,7 @@
         
         .chart-container {
             text-align: center;
-            height: 500px;
+            height: 550px;
             background: white;
             padding: 20px;
             border-radius: 10px;
@@ -143,28 +143,23 @@
             color: #2b9347;
         }
         
-        email-container {
+        .email-container {
             background: white;
-            padding: 15px 20px;  /* Reduced top/bottom padding from 20px to 15px */
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-left: 4px solid #2b9347;
             margin-bottom: 20px;
-            display: flex;  /* Add flexbox layout */
-            align-items: center;  /* Center items vertically */
-            gap: 15px;  /* Add space between label and input */
         }
-
+        
         .email-container h3 {
-            margin: 0;  /* Remove default margins */
+            margin: 0 0 15px 0;
             color: #233d4d;
-            font-size: 16px;  /* Slightly smaller font */
-            white-space: nowrap;  /* Prevent label from wrapping */
-            flex-shrink: 0;  /* Prevent label from shrinking */
+            font-size: 18px;
         }
-
+        
         .email-container input {
-            flex: 1;  /* Allow input to take remaining space */
+            width: 100%;
             padding: 10px;
             border: 2px solid #ddd;
             border-radius: 5px;
@@ -314,7 +309,7 @@
                         Score: <span id="gaugeScore">6</span> / 18
                     </p>
                 </div>
-                <p><strong>Maturity Level:</strong> <span id="maturityLevel">Efficient</span></p>
+                <p><strong>Maturity Level:</strong> <span id="maturityLevel">Better</span></p>
                 <div id="recommendations"></div>
             </div>
             
@@ -366,7 +361,7 @@
                             ticks: {
                                 stepSize: 1,
                                 callback: function(value) {
-                                    const levels = ['None', 'Chaos', 'Efficient', 'Zen'];
+                                    const levels = ['None', 'Chaos', 'Better', 'Zen'];
                                     return levels[value] || value;
                                 }
                             },
@@ -459,7 +454,7 @@
             if (totalScore <= 6) {
                 maturityLevel = 'Chaos';
             } else if (totalScore <= 12) {
-                maturityLevel = 'Efficient';
+                maturityLevel = 'Better';
             } else {
                 maturityLevel = 'Zen';
             }
