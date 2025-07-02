@@ -268,7 +268,7 @@
                     <option value="0">0 - We Don't (Electronic what now?)</option>
                     <option value="1" selected>1 - &lt;20% suppliers onboarded (A few brave souls have joined the party)</option>
                     <option value="2">2 - 20 to 80% supplier onboarding (Making solid progress without breaking anyone's brain)</option>
-                    <option value="3">3 - &gt;0% supplier adoption (We're basically the Pied Piper of electronic invoicing)</option>
+                    <option value="3">3 - &gt;80% supplier adoption (We're basically the Pied Piper of electronic invoicing)</option>
                 </select>
                 <div class="score-display">Score: <span id="score4">2</span></div>
             </div>
@@ -333,7 +333,7 @@
                     labels: [
                         '1. Approval & Dispute Workflows',
                         '2. Pricing Validation',
-                        '3. ERP and Integration',
+                        '3. ERP & Integrations',
                         '4. Supplier Engagement',
                         '5. Reporting & Analytics',
                         '6. Supplier Complinace'
@@ -466,7 +466,7 @@
         // Generate recommendations
         function generateRecommendations(scores) {
             const areas = [
-                'Approval & Dispute Workflows', 'Pricing Validation', 'ERP & Integration',
+                'Approval & Dispute Workflows', 'Pricing Validation', 'ERP & Integrations',
                 'Supplier Engagement', 'Reporting & Analytics', 'Supplier Complinace'
             ];
             
