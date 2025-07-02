@@ -239,10 +239,10 @@
 
             <!-- Question 2 -->
             <div class="question-card">
-                <h4>2. How does your organization currently track supplier pricing?</h4>
+                <h4>2. How does your organization currently validate supplier pricing?</h4>
                 <select id="q2" onchange="updateChart()">
                     <option value="0">0 - We Don't (Pricing is a delightful mystery)</option>
-                    <option value="1" selected>1 - Reporting from invoice coding (Playing detective with spreadsheets)</option>
+                    <option value="1" selected>1 - Manual review and reporting (Playing detective with spreadsheets)</option>
                     <option value="2">2 - Pricebook (Look at us being all organized!)</option>
                     <option value="3">3 - Electronic Field ticketing with pricebook (Living in the future)</option>
                 </select>
@@ -251,7 +251,7 @@
 
             <!-- Question 3 -->
             <div class="question-card">
-                <h4>3. Which integration design is set up for your ERP with invoices?</h4>
+                <h4>3. Which integration design is set up for your ERP and other systems for invoices?</h4>
                 <select id="q3" onchange="updateChart()">
                     <option value="0">0 - Manual Process or CSV upload (Stone age tools for modern problems)</option>
                     <option value="1" selected>1 - One way integration for invoice(s) upload to ERP (Baby steps toward civilization)</option>
@@ -267,8 +267,8 @@
                 <select id="q4" onchange="updateChart()">
                     <option value="0">0 - We Don't (Electronic what now?)</option>
                     <option value="1" selected>1 - &lt;20% suppliers onboarded (A few brave souls have joined the party)</option>
-                    <option value="2">2 - 20 to 90% supplier onboarding (Making solid progress without breaking anyone's brain)</option>
-                    <option value="3">3 - &gt;90% supplier adoption (We're basically the Pied Piper of electronic invoicing)</option>
+                    <option value="2">2 - 20 to 80% supplier onboarding (Making solid progress without breaking anyone's brain)</option>
+                    <option value="3">3 - &gt;0% supplier adoption (We're basically the Pied Piper of electronic invoicing)</option>
                 </select>
                 <div class="score-display">Score: <span id="score4">2</span></div>
             </div>
@@ -287,12 +287,12 @@
 
             <!-- Question 6 -->
             <div class="question-card">
-                <h4>6. How does your organization manage suppliers certs and MSAs?</h4>
+                <h4>6. How does your organization manage suppliers compliance with certs and MSAs?</h4>
                 <select id="q6" onchange="updateChart()">
                     <option value="0">0 - We Don't (Certificates are basically participation trophies, right?)</option>
-                    <option value="1" selected>1 - Manual tracking of approved supplier management (Filing cabinets are our friends)</option>
-                    <option value="2">2 - Tools for approved supplier management (We've graduated to the digital age)</option>
-                    <option value="3">3 - Supplier management tool integration (Everything's connected like a beautiful web)</option>
+                    <option value="1" selected>1 - Manual tracking of approved supplier compliance (Filing cabinets are our friends)</option>
+                    <option value="2">2 - Tools for approved supplier compliance (We've graduated to the digital age)</option>
+                    <option value="3">3 - Supplier compliance tool integration (Everything's connected like a beautiful web)</option>
                 </select>
                 <div class="score-display">Score: <span id="score6">1</span></div>
             </div>
@@ -331,12 +331,12 @@
                 type: 'radar',
                 data: {
                     labels: [
-                        'Approval & Dispute Workflows',
-                        'Pricing Controls',
-                        'ERP Integration',
-                        'Supplier Engagement',
-                        'Reporting & Analytics',
-                        'Supplier Management'
+                        '1. Approval & Dispute Workflows',
+                        '2. Pricing Validation',
+                        '3. ERP and Integration',
+                        '4. Supplier Engagement',
+                        '5. Reporting & Analytics',
+                        '6. Supplier Complinace'
                     ],
                     datasets: [{
                         label: 'Current Maturity',
@@ -466,8 +466,8 @@
         // Generate recommendations
         function generateRecommendations(scores) {
             const areas = [
-                'Approval & Dispute Workflows', 'Pricing Controls', 'ERP Integration',
-                'Supplier Engagement', 'Reporting & Analytics', 'Supplier Management'
+                'Approval & Dispute Workflows', 'Pricing Validation', 'ERP & Integration',
+                'Supplier Engagement', 'Reporting & Analytics', 'Supplier Complinace'
             ];
             
             const recommendations = [];
