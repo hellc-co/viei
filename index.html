@@ -490,21 +490,48 @@
                 '</ul>';
         }
        // Save Data
-        function saveData() {
-  var email = document.getElementById("email").value;
-  var q1 = document.getElementById("q1").value;
-  var q2 = document.getElementById("q2").value;
-  var q3 = document.getElementById("q3").value;
-  var q4 = document.getElementById("q4").value;
-  var q5 = document.getElementById("q5").value;
-  var q6 = document.getElementById("q6").value;
-  
-  if (q6 !== "") { // Trigger only if q6 is answered
-    var data = `Email: ${email}\nQ1: ${q1}\nQ2: ${q2}\nQ3: ${q3}\nQ4: ${q4}\nQ5: ${q5}\nQ6: ${q6}`;
-    console.log(data); // For debugging
-    // Send data (see below for email or storage)
-  }
+    function saveData() {
+    console.log("saveData() triggered from Question 6");
+    
+    // Check each element individually to identify the missing one
+    var emailElement = document.getElementById("email");
+    var q1Element = document.getElementById("q1");
+    var q2Element = document.getElementById("q2");
+    var q3Element = document.getElementById("q3");
+    var q4Element = document.getElementById("q4");
+    var q5Element = document.getElementById("q5");
+    var q6Element = document.getElementById("q6");
+    
+    // Log which elements are found/missing
+    console.log("Email element:", emailElement);
+    console.log("Q1 element:", q1Element);
+    console.log("Q2 element:", q2Element);
+    console.log("Q3 element:", q3Element);
+    console.log("Q4 element:", q4Element);
+    console.log("Q5 element:", q5Element);
+    console.log("Q6 element:", q6Element);
+    
+    // Only proceed if all elements exist
+    if (emailElement && q1Element && q2Element && q3Element && q4Element && q5Element && q6Element) {
+        var email = emailElement.value;
+        var q1 = q1Element.value;
+        var q2 = q2Element.value;
+        var q3 = q3Element.value;
+        var q4 = q4Element.value;
+        var q5 = q5Element.value;
+        var q6 = q6Element.value;
+        
+        if (q6 !== "") {
+            var data = `Email: ${email}\nQ1: ${q1}\nQ2: ${q2}\nQ3: ${q3}\nQ4: ${q4}\nQ5: ${q5}\nQ6: ${q6}`;
+            console.log("Captured Data:", data);
+        } else {
+            console.log("Question 6 not answered yet.");
+        }
+    } else {
+        console.log("One or more form elements are missing!");
+    }
 }
+
         
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
