@@ -489,6 +489,22 @@
                 recommendations.map(rec => `<li>${rec}</li>`).join('') + 
                 '</ul>';
         }
+       // Save Data
+        function saveData() {
+  var email = document.getElementById("email").value;
+  var q1 = document.getElementById("q1").value;
+  var q2 = document.getElementById("q2").value;
+  var q3 = document.getElementById("q3").value;
+  var q4 = document.getElementById("q4").value;
+  var q5 = document.getElementById("q5").value;
+  var q6 = document.getElementById("q6").value;
+  
+  if (q6 !== "") { // Trigger only if q6 is answered
+    var data = `Email: ${email}\nQ1: ${q1}\nQ2: ${q2}\nQ3: ${q3}\nQ4: ${q4}\nQ5: ${q5}\nQ6: ${q6}`;
+    console.log(data); // For debugging
+    // Send data (see below for email or storage)
+  }
+}
         
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
