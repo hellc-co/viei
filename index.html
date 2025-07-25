@@ -222,14 +222,13 @@
             <!-- Email Input -->
             <div class="email-container">
                 <h3>Email Address</h3>
-                
-                <input type="email" id="emailInput" placeholder="Enter your email address to begin" onchange="updateChart();savedata()">
+                <input type="email" id="emailInput" placeholder="Enter your email address to begin" onchange="updateChart();saveData()">
             </div>
             
             <!-- Question 1 -->
             <div class="question-card">
                 <h4>1. How would you describe your organization's approach to invoice approvals and dispute resolution workflows?</h4>
-                <select id="q1" onchange="updateChart();savedata()">
+                <select id="q1" onchange="updateChart();saveData()">
                     <option value="0">0 - None (We're basically winging it)</option>
                     <option value="1">1 - Approvals and disputes are resolved manually with minimal tracking or defined roles (Chaos with a side of confusion)</option>
                     <option value="2">2 - Formal approval hierarchies and dispute resolution paths exist, with some tracking and escalation rules (Getting our act together)</option>
@@ -241,7 +240,7 @@
             <!-- Question 2 -->
             <div class="question-card">
                 <h4>2. How does your organization currently validate supplier pricing?</h4>
-                <select id="q2" onchange="updateChart();savedata()">
+                <select id="q2" onchange="updateChart();saveData()">
                     <option value="0">0 - We Don't (Pricing is a delightful mystery)</option>
                     <option value="1">1 - Manual review and reporting (Playing detective with spreadsheets)</option>
                     <option value="2">2 - Pricebook (Look at us being all organized!)</option>
@@ -253,7 +252,7 @@
             <!-- Question 3 -->
             <div class="question-card">
                 <h4>3. Which integration design is set up for your ERP and other systems for invoices?</h4>
-                <select id="q3" onchange="updateChart();savedata()">
+                <select id="q3" onchange="updateChart();saveData()">
                     <option value="0">0 - Manual Process or CSV upload (Stone age tools for modern problems)</option>
                     <option value="1">1 - One way integration for invoice(s) upload to ERP (Baby steps toward civilization)</option>
                     <option value="2">2 - Two-way ERP integration (Now we're cooking with gas!)</option>
@@ -265,7 +264,7 @@
             <!-- Question 4 -->
             <div class="question-card">
                 <h4>4. How many of your suppliers are onboarded for electronic invoicing?</h4>
-                <select id="q4" onchange="updateChart();savedata()">
+                <select id="q4" onchange="updateChart();saveData()">
                     <option value="0">0 - We Don't (Electronic what now?)</option>
                     <option value="1">1 - &lt;20% suppliers onboarded (A few brave souls have joined the party)</option>
                     <option value="2">2 - 20 to 80% supplier onboarding (Making solid progress without breaking anyone's brain)</option>
@@ -277,7 +276,7 @@
             <!-- Question 5 -->
             <div class="question-card">
                 <h4>5. How would you describe your organization's current approach to reporting of aging, spend, supplier tracking, fraud prevention, etc?</h4>
-                <select id="q5" onchange="updateChart();savedata()">
+                <select id="q5" onchange="updateChart();saveData()">
                     <option value="0">0 - We don't (Ignorance is bliss, right?)</option>
                     <option value="1">1 - We have basic reports that are manually updated (Someone's got to feed the spreadsheet monster)</option>
                     <option value="2">2 - Reporting automatically updated with a BI tool (Look ma, no hands!)</option>
@@ -492,10 +491,11 @@
         }
        // Save Data
  function saveData() {
-    console.log("saveData() triggered from Question 6");
+    console.log("saveData() triggered");
     
     // Safely get values with fallback for missing elements
-    var email = document.getElementById("email")?.value || "";
+    // Note: Using "emailInput" to match your HTML id
+    var email = document.getElementById("emailInput")?.value || "";
     var q1 = document.getElementById("q1")?.value || "";
     var q2 = document.getElementById("q2")?.value || "";
     var q3 = document.getElementById("q3")?.value || "";
@@ -506,7 +506,6 @@
     var data = `Email: ${email}\nQ1: ${q1}\nQ2: ${q2}\nQ3: ${q3}\nQ4: ${q4}\nQ5: ${q5}\nQ6: ${q6}`;
     console.log("Captured Data:", data);
 }
-        
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initChart();
