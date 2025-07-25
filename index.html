@@ -222,13 +222,14 @@
             <!-- Email Input -->
             <div class="email-container">
                 <h3>Email Address</h3>
-                <input type="email" id="emailInput" placeholder="Enter your email address">
+                
+                <input type="email" id="emailInput" placeholder="Enter your email address to begin" onchange="updateChart();savedata()">
             </div>
             
             <!-- Question 1 -->
             <div class="question-card">
                 <h4>1. How would you describe your organization's approach to invoice approvals and dispute resolution workflows?</h4>
-                <select id="q1" onchange="updateChart()">
+                <select id="q1" onchange="updateChart();savedata()">
                     <option value="0">0 - None (We're basically winging it)</option>
                     <option value="1">1 - Approvals and disputes are resolved manually with minimal tracking or defined roles (Chaos with a side of confusion)</option>
                     <option value="2">2 - Formal approval hierarchies and dispute resolution paths exist, with some tracking and escalation rules (Getting our act together)</option>
@@ -240,9 +241,9 @@
             <!-- Question 2 -->
             <div class="question-card">
                 <h4>2. How does your organization currently validate supplier pricing?</h4>
-                <select id="q2" onchange="updateChart()">
+                <select id="q2" onchange="updateChart();savedata()">
                     <option value="0">0 - We Don't (Pricing is a delightful mystery)</option>
-                    <option value="1" selected>1 - Manual review and reporting (Playing detective with spreadsheets)</option>
+                    <option value="1">1 - Manual review and reporting (Playing detective with spreadsheets)</option>
                     <option value="2">2 - Pricebook (Look at us being all organized!)</option>
                     <option value="3">3 - Electronic Field ticketing with pricebook (Living in the future)</option>
                 </select>
@@ -252,9 +253,9 @@
             <!-- Question 3 -->
             <div class="question-card">
                 <h4>3. Which integration design is set up for your ERP and other systems for invoices?</h4>
-                <select id="q3" onchange="updateChart()">
+                <select id="q3" onchange="updateChart();savedata()">
                     <option value="0">0 - Manual Process or CSV upload (Stone age tools for modern problems)</option>
-                    <option value="1" selected>1 - One way integration for invoice(s) upload to ERP (Baby steps toward civilization)</option>
+                    <option value="1">1 - One way integration for invoice(s) upload to ERP (Baby steps toward civilization)</option>
                     <option value="2">2 - Two-way ERP integration (Now we're cooking with gas!)</option>
                     <option value="3">3 - Fully integrated ERP and master data (Everything talks to everything - it's beautiful)</option>
                 </select>
@@ -264,9 +265,9 @@
             <!-- Question 4 -->
             <div class="question-card">
                 <h4>4. How many of your suppliers are onboarded for electronic invoicing?</h4>
-                <select id="q4" onchange="updateChart()">
+                <select id="q4" onchange="updateChart();savedata()">
                     <option value="0">0 - We Don't (Electronic what now?)</option>
-                    <option value="1" selected>1 - &lt;20% suppliers onboarded (A few brave souls have joined the party)</option>
+                    <option value="1">1 - &lt;20% suppliers onboarded (A few brave souls have joined the party)</option>
                     <option value="2">2 - 20 to 80% supplier onboarding (Making solid progress without breaking anyone's brain)</option>
                     <option value="3">3 - &gt;80% supplier adoption (We're basically the Pied Piper of electronic invoicing)</option>
                 </select>
@@ -276,8 +277,8 @@
             <!-- Question 5 -->
             <div class="question-card">
                 <h4>5. How would you describe your organization's current approach to reporting of aging, spend, supplier tracking, fraud prevention, etc?</h4>
-                <select id="q5" onchange="updateChart()">
-                    <option value="0" selected>0 - We don't (Ignorance is bliss, right?)</option>
+                <select id="q5" onchange="updateChart();savedata()">
+                    <option value="0">0 - We don't (Ignorance is bliss, right?)</option>
                     <option value="1">1 - We have basic reports that are manually updated (Someone's got to feed the spreadsheet monster)</option>
                     <option value="2">2 - Reporting automatically updated with a BI tool (Look ma, no hands!)</option>
                     <option value="3">3 - Invoice reporting alerts are automated, and AI assistants are utilized to analyze trends (We've got robots doing the thinking)</option>
@@ -290,7 +291,7 @@
                 <h4>6. How does your organization manage suppliers compliance with certs and MSAs?</h4>
                 <select id="q6" onchange="updateChart();saveData();">
                     <option value="0">0 - We Don't (Certificates are basically participation trophies, right?)</option>
-                    <option value="1" selected>1 - Manual tracking of approved supplier compliance (Filing cabinets are our friends)</option>
+                    <option value="1">1 - Manual tracking of approved supplier compliance (Filing cabinets are our friends)</option>
                     <option value="2">2 - Tools for approved supplier compliance (We've graduated to the digital age)</option>
                     <option value="3">3 - Supplier compliance tool integration (Everything's connected like a beautiful web)</option>
                 </select>
