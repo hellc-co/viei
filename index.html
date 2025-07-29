@@ -493,19 +493,24 @@
 
      // Save Data
 function saveData() {
-    let dataToSave = "";
-    const inputElement = document.querySelector('#emailInput'); // Updated to match your email input ID
-    if (inputElement) {
-        dataToSave = inputElement.value;
-    } else {
-        const pageContent = document.querySelector('body').innerText.substring(0, 500);
-        dataToSave = pageContent;
+    let dataToSave = {};
+    // Collect email
+    const emailElement = document.querySelector('#emailInput');
+    if (emailElement) {
+        dataToSave.email = emailElement.value;
+    }
+    // Collect all question scores
+    for (let i = 1; i <= 6; i++) {
+        const qElement = document.querySelector(`#q\${i}`);
+        if (qElement) {
+            dataToSave[`q\${i}`] = qElement.value;
+        }
     }
     console.log("Data to save:", dataToSave);
-    // Rest of the fetch code to send data to Google Apps Script
+    // Send data to Google Apps Script
     fetch('https://script.google.com/macros/s/AKfycbxdt1F1E58K9XjOUgSjZ_8-11QD8sBHrV3WsDa3FdnUrO5rscf0H32gplfiQQ4vH30W/exec', {
         method: 'POST',
-        body: JSON.stringify({ data: dataToSave }),
+        body: JSON.stringify(dataToSave),
         headers: {
             'Content-Type': 'application/json'
         },
@@ -513,8 +518,9 @@ function saveData() {
         redirect: 'follow'
     })
     .then(response => {
+        console.log("Response status:", response.status);
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Network response was not ok: ' + response.statusText);
         }
         return response.json();
     })
@@ -523,10 +529,11 @@ function saveData() {
         alert('Data successfully sent to Google Sheet!');
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to send data. Check console for details.');
+        console.error('Detailed Error:', error);
+        alert('Failed to send data. This is likely due to a CORS policy restriction. Check the console for detailed error information. Consider using a proxy if the issue persists.');
     });
 }
+
 
  /// old savedata() for ref
  //function saveData() {
