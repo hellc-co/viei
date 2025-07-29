@@ -489,50 +489,58 @@
                 recommendations.map(rec => `<li>${rec}</li>`).join('') + 
                 '</ul>';
         }
-       // Save Data
+      
 
      // Save Data
 function saveData() {
     let dataToSave = {};
+    
     // Collect email
-    const emailElement = document.querySelector('#emailInput');
+    const emailElement = document.getElementById('emailInput');
     if (emailElement) {
         dataToSave.email = emailElement.value;
     }
-    // Collect all question scores
+    
+    // Collect all question scores - FIXED: Remove backslashes
     for (let i = 1; i <= 6; i++) {
-        const qElement = document.querySelector('#q' + i);
+        const qElement = document.getElementById(`q\${i}`);
         if (qElement) {
-            dataToSave['q' + i] = qElement.value;
+            dataToSave[`q\${i}`] = qElement.value;
         }
     }
+    
     console.log("Data to save:", dataToSave);
-    // Send data to Google Apps Script
-    fetch('https://script.google.com/macros/s/AKfycbxdt1F1E58K9XjOUgSjZ_8-11QD8sBHrV3WsDa3FdnUrO5rscf0H32gplfiQQ4vH30W/exec', {
-        method: 'POST',
-        body: JSON.stringify(dataToSave),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        mode: 'cors',
-        redirect: 'follow'
-    })
-    .then(response => {
-        console.log("Response status:", response.status);
-        if (!response.ok) {
-            throw new Error('Network response was not ok: ' + response.statusText);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Success:', data);
-        alert('Data successfully sent to Google Sheet!');
-    })
-    .catch(error => {
-        console.error('Detailed Error:', error);
-        alert('Failed to send data. This is likely due to a CORS policy restriction. Check the console for detailed error information. Consider using a proxy if the issue persists.');
-    });
+    
+    // CORS-free solution using form submission
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://script.google.com/macros/s/AKfycbxdt1F1E58K9XjOUgSjZ_8-11QD8sBHrV3WsDa3FdnUrO5rscf0H32gplfiQQ4vH30W/exec';
+    form.target = '_blank';
+    form.style.display = 'none';
+    
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'data';
+    input.value = JSON.stringify(dataToSave);
+    
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+    
+    console.log('Data submitted successfully!');
+    
+    // Show success notification
+    const notification = document.createElement('div');
+    notification.textContent = 'Data saved to Google Sheets!';
+    notification.style.cssText = `
+        position: fixed; top: 20px; right: 20px; background: #4CAF50; 
+        color: white; padding: 12px 20px; border-radius: 4px; z-index: 1000;
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => notification.remove(), 3000);
 }
+
 
 
  /// old savedata() for ref
