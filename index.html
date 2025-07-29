@@ -490,21 +490,67 @@
                 '</ul>';
         }
        // Save Data
- function saveData() {
-    console.log("saveData() triggered");
+
+        <script>
+    function saveData() {
+        let dataToSave = "";
+        const inputElement = document.querySelector('#myInput'); // Replace 'myInput' with the ID of your input field
+        if (inputElement) {
+            dataToSave = inputElement.value;
+        } else {
+            // Fallback to page content if no specific input is found
+            const pageContent = document.querySelector('body').innerText.substring(0, 500);
+            dataToSave = pageContent;
+        }
+        console.log("Data to save:", dataToSave);
+        const outputElement = document.querySelector('#output');
+        if (outputElement) {
+            outputElement.innerText = "Saved Data: " + dataToSave;
+        } else {
+            alert("Data saved (check console): " + dataToSave);
+        }
+        // Send data to Google Apps Script
+        fetch('https://script.google.com/macros/s/AKfycbxdt1F1E58K9XjOUgSjZ_8-11QD8sBHrV3WsDa3FdnUrO5rscf0H32gplfiQQ4vH30W/exec', {
+            method: 'POST',
+            body: JSON.stringify({ data: dataToSave }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors', // Ensure CORS mode is set (though Google Apps Script handles this)
+            redirect: 'follow' // Follow redirects if necessary
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+            alert('Data successfully sent to Google Sheet!');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to send data. Check console for details.');
+        });
+    }
+</script>
+
+// function saveData() {
+  //  console.log("saveData() triggered");
     
-    // Safely get values with fallback for missing elements
-    // Note: Using "emailInput" to match your HTML id
-    var email = document.getElementById("emailInput")?.value || "";
-    var q1 = document.getElementById("q1")?.value || "";
-    var q2 = document.getElementById("q2")?.value || "";
-    var q3 = document.getElementById("q3")?.value || "";
-    var q4 = document.getElementById("q4")?.value || "";
-    var q5 = document.getElementById("q5")?.value || "";
-    var q6 = document.getElementById("q6")?.value || "";
+   // // Safely get values with fallback for missing elements
+   // // Note: Using "emailInput" to match your HTML id
+    //var email = document.getElementById("emailInput")?.value || "";
+    //var q1 = document.getElementById("q1")?.value || "";
+    //var q2 = document.getElementById("q2")?.value || "";
+    //var q3 = document.getElementById("q3")?.value || "";
+    //var q4 = document.getElementById("q4")?.value || "";
+    //var q5 = document.getElementById("q5")?.value || "";
+    //var q6 = document.getElementById("q6")?.value || "";
     
-    var data = `Email: ${email}\nQ1: ${q1}\nQ2: ${q2}\nQ3: ${q3}\nQ4: ${q4}\nQ5: ${q5}\nQ6: ${q6}`;
-    console.log("Captured Data:", data);
+    //var data = `Email: ${email}\nQ1: ${q1}\nQ2: ${q2}\nQ3: ${q3}\nQ4: ${q4}\nQ5: ${q5}\nQ6: ${q6}`;
+    //console.log("Captured Data:", data);
 }
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
