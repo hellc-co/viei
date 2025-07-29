@@ -491,50 +491,43 @@
         }
        // Save Data
 
-        <script>
-    function saveData() {
-        let dataToSave = "";
-        const inputElement = document.querySelector('#myInput'); // Replace 'myInput' with the ID of your input field
-        if (inputElement) {
-            dataToSave = inputElement.value;
-        } else {
-            // Fallback to page content if no specific input is found
-            const pageContent = document.querySelector('body').innerText.substring(0, 500);
-            dataToSave = pageContent;
-        }
-        console.log("Data to save:", dataToSave);
-        const outputElement = document.querySelector('#output');
-        if (outputElement) {
-            outputElement.innerText = "Saved Data: " + dataToSave;
-        } else {
-            alert("Data saved (check console): " + dataToSave);
-        }
-        // Send data to Google Apps Script
-        fetch('https://script.google.com/macros/s/AKfycbxdt1F1E58K9XjOUgSjZ_8-11QD8sBHrV3WsDa3FdnUrO5rscf0H32gplfiQQ4vH30W/exec', {
-            method: 'POST',
-            body: JSON.stringify({ data: dataToSave }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            mode: 'cors', // Ensure CORS mode is set (though Google Apps Script handles this)
-            redirect: 'follow' // Follow redirects if necessary
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Success:', data);
-            alert('Data successfully sent to Google Sheet!');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Failed to send data. Check console for details.');
-        });
+     // Save Data
+function saveData() {
+    let dataToSave = "";
+    const inputElement = document.querySelector('#emailInput'); // Updated to match your email input ID
+    if (inputElement) {
+        dataToSave = inputElement.value;
+    } else {
+        const pageContent = document.querySelector('body').innerText.substring(0, 500);
+        dataToSave = pageContent;
     }
-</script>
+    console.log("Data to save:", dataToSave);
+    // Rest of the fetch code to send data to Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbxdt1F1E58K9XjOUgSjZ_8-11QD8sBHrV3WsDa3FdnUrO5rscf0H32gplfiQQ4vH30W/exec', {
+        method: 'POST',
+        body: JSON.stringify({ data: dataToSave }),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        mode: 'cors',
+        redirect: 'follow'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        alert('Data successfully sent to Google Sheet!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to send data. Check console for details.');
+    });
+}
+
 
 // function saveData() {
   //  console.log("saveData() triggered");
