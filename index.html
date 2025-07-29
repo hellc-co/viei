@@ -501,9 +501,9 @@ function saveData() {
     }
     // Collect all question scores
     for (let i = 1; i <= 6; i++) {
-        const qElement = document.querySelector(`#q\${i}`);
+        const qElement = document.querySelector('#q' + i);
         if (qElement) {
-            dataToSave[`q\${i}`] = qElement.value;
+            dataToSave['q' + i] = qElement.value;
         }
     }
     console.log("Data to save:", dataToSave);
