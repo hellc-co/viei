@@ -498,7 +498,7 @@
             const questionCards = document.querySelectorAll('.question-card');
     
             questionCards.forEach(card => {
-                if (email.length <= 2) {
+                if (email.length <= 1) { // made 1 so maybe we get inintals at a min.  Dont want to make it an email becuase we might get na@na.com
                     card.classList.add('question-disabled');
                     const select = card.querySelector('select');
                     select.disabled = true;
