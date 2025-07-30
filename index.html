@@ -173,6 +173,18 @@
             outline: none;
             border-color: #2b9347;
         }
+
+.question-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    background-color: #f5f5f5;
+}
+
+.question-disabled select {
+    background-color: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+}
         
         h2 {
             text-align: center;
@@ -223,7 +235,10 @@
             <!-- Email Input -->
             <div class="email-container">
                 <h3>Email Address</h3>
-                <input type="email" id="emailInput" placeholder="Enter your email address to begin" onchange="updateChart();saveData()">
+               <input type="email" id="emailInput" placeholder="Enter your email address to begin" oninput="toggleQuestionAccess(); updateChart(); saveData()">
+<!--     removed to test out grayouted questions          
+ <input type="email" id="emailInput" placeholder="Enter your email address to begin" onchange="updateChart();saveData()">
+-->
             </div>
             
             <!-- Question 1 -->
@@ -491,9 +506,25 @@
                 '</ul>';
         }
       
+// for email Required
 
+function toggleQuestionAccess() {
+    const email = document.getElementById("emailInput").value.trim();
+    const questionCards = document.querySelectorAll('.question-card');
+    
+    questionCards.forEach(card => {
+        if (email === "") {
+            card.classList.add('question-disabled');
+            const select = card.querySelector('select');
+            select.disabled = true;
+        } else {
+            card.classList.remove('question-disabled');
+            const select = card.querySelector('select');
+            select.disabled = false;
+        }
+    });
+}
      // Save Data
-
 function saveData() {
     console.log("saveData() triggered");
     
@@ -562,6 +593,7 @@ function saveData() {
         document.addEventListener('DOMContentLoaded', function() {
             initChart();
             updateChart();
+            toggleQuestionAccess(); // Add this line
         });
     </script>
 </body>
