@@ -223,8 +223,8 @@
             <div class="email-container">
                 <h3>Email Address</h3>
                <input type="email" id="emailInput" placeholder="Enter your email address to begin" 
-                   oninput="toggleQuestionAccess(); updateChart()"
-                   onblur="saveData()"> <!-- to not save on every keystroke---->
+                   oninput="toggleQuestionAccess()"
+                   onblur="updateChart();saveData()"> <!-- to not save on every keystroke---->
             </div>
             
             <!-- Question 1 -->
@@ -497,16 +497,16 @@
             const email = document.getElementById("emailInput").value.trim();
             const questionCards = document.querySelectorAll('.question-card');
     
-        questionCards.forEach(card => {
-            if (email <= 2) {
-                card.classList.add('question-disabled');
-                const select = card.querySelector('select');
-                select.disabled = true;
-            } else {
-                card.classList.remove('question-disabled');
-                const select = card.querySelector('select');
-                select.disabled = false;
-            }
+            questionCards.forEach(card => {
+                if (email.length <= 2) {
+                    card.classList.add('question-disabled');
+                    const select = card.querySelector('select');
+                    select.disabled = true;
+                } else {
+                    card.classList.remove('question-disabled');
+                    const select = card.querySelector('select');
+                    select.disabled = false;
+                }
         });
 }
          // Save Data
