@@ -494,9 +494,58 @@
 
      // Save Data
 
+function saveData() {
+    console.log("saveData() triggered");
+    
+    // Get form values
+    var email = document.getElementById("emailInput")?.value || "";
+    var q1 = document.getElementById("q1")?.value || "";
+    var q2 = document.getElementById("q2")?.value || "";
+    var q3 = document.getElementById("q3")?.value || "";
+    var q4 = document.getElementById("q4")?.value || "";
+    var q5 = document.getElementById("q5")?.value || "";
+    var q6 = document.getElementById("q6")?.value || "";
+    
+    // Only proceed if email is provided
+    if (!email) {
+        console.log("No email provided, skipping save");
+        return;
+    }
+    
+    // Prepare data payload
+    var payload = {
+        action: 'saveAssessment',
+        email: email,
+        q1: q1,
+        q2: q2,
+        q3: q3,
+        q4: q4,
+        q5: q5,
+        q6: q6
+    };
+    
+    console.log("Sending payload:", payload);
+    
+    // Send to Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbwodxem7a3lzz_IafnEjClVIf79ZmzIQpVGBf66AIF6uaHzm4ArC-g-xRQ4ESAjy1q9/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(payload),
+        redirect: 'follow'
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
-
- /// old savedata() for ref
+ 
+ /* old savedata() for ref
  function saveData() {
    console.log("saveData() triggered");
     
@@ -512,7 +561,7 @@
     
     var data = `Email: ${email}\nQ1: ${q1}\nQ2: ${q2}\nQ3: ${q3}\nQ4: ${q4}\nQ5: ${q5}\nQ6: ${q6}`;
     console.log("Captured Data:", data);
-}
+} */
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initChart();
