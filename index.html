@@ -497,7 +497,7 @@
 function saveData() {
     console.log("saveData() triggered");
     
-    // Get form values
+    // Get form values (allow email to be empty)
     var email = document.getElementById("emailInput")?.value || "";
     var q1 = document.getElementById("q1")?.value || "";
     var q2 = document.getElementById("q2")?.value || "";
@@ -506,13 +506,7 @@ function saveData() {
     var q5 = document.getElementById("q5")?.value || "";
     var q6 = document.getElementById("q6")?.value || "";
     
-    // Only proceed if email is provided
-    if (!email) {
-        console.log("No email provided, skipping save");
-        return;
-    }
-    
-    // Prepare data payload
+    // Prepare data payload with timestamp
     var payload = {
         action: 'saveAssessment',
         email: email,
@@ -521,7 +515,8 @@ function saveData() {
         q3: q3,
         q4: q4,
         q5: q5,
-        q6: q6
+        q6: q6,
+        timestamp: new Date().toISOString()
     };
     
     console.log("Sending payload:", payload);
@@ -543,6 +538,7 @@ function saveData() {
         console.error('Error:', error);
     });
 }
+
 
  
  /* old savedata() for ref
