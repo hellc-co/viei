@@ -204,6 +204,7 @@
     </style>
 </head>
 <body>
+   <!-- removed for VI page  
     <div class="header">
         <div class="container">
             <div class="header-content">
@@ -215,7 +216,7 @@
             </div>
         </div>
     </div>
-
+---->
     <div class="container">
         <!-- Column 1: Email and Questions ---->
         <div class="questions-container">
@@ -243,8 +244,8 @@
                 <select id="q2" onchange="updateChart();saveData()">
                     <option value="0">0 - We Don't (Pricing is a delightful mystery)</option>
                     <option value="1">1 - Manual review and reporting (Playing detective with spreadsheets)</option>
-                    <option value="2">2 - Pricebook (Look at us being all organized!)</option>
-                    <option value="3">3 - Electronic Field ticketing with pricebook (Living in the future)</option>
+                    <option value="2">2 - Pricebooks (Look at us being all organized!)</option>
+                    <option value="3">3 - Electronic ordering, field ticketing and pricebooks (Living in the future)</option>
                 </select>
                 <div class="score-display">Score: <span id="score2">0</span></div>
             </div>
@@ -287,7 +288,7 @@
 
             <!-- Question 6 -->
             <div class="question-card">
-                <h4>6. How does your organization manage suppliers compliance with certs and MSAs?</h4>
+                <h4>6. How does your organization manage supplier compliance with certs and MSAs?</h4>
                 <select id="q6" onchange="updateChart();saveData();">
                     <option value="0">0 - We Don't (Certificates are basically participation trophies, right?)</option>
                     <option value="1">1 - Manual tracking of approved supplier compliance (Filing cabinets are our friends)</option>
@@ -336,7 +337,7 @@
                         '3. ERP & Integrations',
                         '4. Supplier Engagement',
                         '5. Reporting & Analytics',
-                        '6. Supplier Complinace'
+                        '6. Supplier Compliance'
                     ],
                     datasets: [{
                         label: 'Current Maturity',
