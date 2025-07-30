@@ -174,17 +174,17 @@
             border-color: #2b9347;
         }
 
-.question-disabled {
-    opacity: 0.5;
-    pointer-events: none;
-    background-color: #f5f5f5;
-}
+        .question-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            background-color: #f5f5f5;
+        }
 
-.question-disabled select {
-    background-color: #f5f5f5;
-    color: #999;
-    cursor: not-allowed;
-}
+        .question-disabled select {
+            background-color: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
         
         h2 {
             text-align: center;
@@ -216,29 +216,13 @@
     </style>
 </head>
 <body>
-   <!-- removed for VI page  
-    <div class="header">
-        <div class="container">
-            <div class="header-content">
-                <img src="https://velocity-insight.com/wp-content/uploads/2021/08/VI_LOGO_large.png" alt="Velocity Insight Logo">
-                <div class="header-text">
-                    <h1>From Chaos to Zen</h1>
-                    <p>Interactive Electronic Invoice Maturity Framework</p>
-                </div>
-            </div>
-        </div>
-    </div>
----->
-    <div class="container">
+     <div class="container">
         <!-- Column 1: Email and Questions ---->
         <div class="questions-container">
             <!-- Email Input -->
             <div class="email-container">
                 <h3>Email Address</h3>
                <input type="email" id="emailInput" placeholder="Enter your email address to begin" oninput="toggleQuestionAccess(); updateChart(); saveData()">
-<!--     removed to test out grayouted questions          
- <input type="email" id="emailInput" placeholder="Enter your email address to begin" onchange="updateChart();saveData()">
--->
             </div>
             
             <!-- Question 1 -->
@@ -506,89 +490,69 @@
                 '</ul>';
         }
       
-// for email Required
-
-function toggleQuestionAccess() {
-    const email = document.getElementById("emailInput").value.trim();
-    const questionCards = document.querySelectorAll('.question-card');
+        // for email Required
+        function toggleQuestionAccess() {
+            const email = document.getElementById("emailInput").value.trim();
+            const questionCards = document.querySelectorAll('.question-card');
     
-    questionCards.forEach(card => {
-        if (email === "") {
-            card.classList.add('question-disabled');
-            const select = card.querySelector('select');
-            select.disabled = true;
-        } else {
-            card.classList.remove('question-disabled');
-            const select = card.querySelector('select');
-            select.disabled = false;
-        }
-    });
+        questionCards.forEach(card => {
+            if (email <= 1) {
+                card.classList.add('question-disabled');
+                const select = card.querySelector('select');
+                select.disabled = true;
+            } else {
+                card.classList.remove('question-disabled');
+                const select = card.querySelector('select');
+                select.disabled = false;
+            }
+        });
 }
-     // Save Data
-function saveData() {
-    console.log("saveData() triggered");
+         // Save Data
+        function saveData() {
+        console.log("saveData() triggered");
     
-    // Get form values (allow email to be empty)
-    var email = document.getElementById("emailInput")?.value || "";
-    var q1 = document.getElementById("q1")?.value || "";
-    var q2 = document.getElementById("q2")?.value || "";
-    var q3 = document.getElementById("q3")?.value || "";
-    var q4 = document.getElementById("q4")?.value || "";
-    var q5 = document.getElementById("q5")?.value || "";
-    var q6 = document.getElementById("q6")?.value || "";
+        // Get form values (allow email to be empty)
+        var email = document.getElementById("emailInput")?.value || "";
+        var q1 = document.getElementById("q1")?.value || "";
+        var q2 = document.getElementById("q2")?.value || "";
+        var q3 = document.getElementById("q3")?.value || "";
+        var q4 = document.getElementById("q4")?.value || "";
+        var q5 = document.getElementById("q5")?.value || "";
+        var q6 = document.getElementById("q6")?.value || "";
     
-    // Prepare data payload with timestamp
-    var payload = {
-        action: 'saveAssessment',
-        email: email,
-        q1: q1,
-        q2: q2,
-        q3: q3,
-        q4: q4,
-        q5: q5,
-        q6: q6,
-        timestamp: new Date().toISOString()
-    };
+        // Prepare data payload with timestamp
+        var payload = {
+            action: 'saveAssessment',
+            email: email,
+            q1: q1,
+            q2: q2,
+            q3: q3,
+            q4: q4,
+            q5: q5,
+            q6: q6,
+            timestamp: new Date().toISOString()
+        };
     
-    console.log("Sending payload:", payload);
+        console.log("Sending payload:", payload);
     
-    // Send to Google Apps Script
-    fetch('https://script.google.com/macros/s/AKfycbwodxem7a3lzz_IafnEjClVIf79ZmzIQpVGBf66AIF6uaHzm4ArC-g-xRQ4ESAjy1q9/exec', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'text/plain;charset=utf-8'
-        },
-        body: JSON.stringify(payload),
-        redirect: 'follow'
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
+        // Send to Google Apps Script
+        fetch('https://script.google.com/macros/s/AKfycbwodxem7a3lzz_IafnEjClVIf79ZmzIQpVGBf66AIF6uaHzm4ArC-g-xRQ4ESAjy1q9/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(payload),
+            redirect: 'follow'
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }    
 
-
- 
- /* old savedata() for ref
- function saveData() {
-   console.log("saveData() triggered");
-    
-    // Safely get values with fallback for missing elements
-    // Note: Using "emailInput" to match your HTML id
-    var email = document.getElementById("emailInput")?.value || "";
-    var q1 = document.getElementById("q1")?.value || "";
-    var q2 = document.getElementById("q2")?.value || "";
-    var q3 = document.getElementById("q3")?.value || "";
-    var q4 = document.getElementById("q4")?.value || "";
-    var q5 = document.getElementById("q5")?.value || "";
-    var q6 = document.getElementById("q6")?.value || "";
-    
-    var data = `Email: ${email}\nQ1: ${q1}\nQ2: ${q2}\nQ3: ${q3}\nQ4: ${q4}\nQ5: ${q5}\nQ6: ${q6}`;
-    console.log("Captured Data:", data);
-} */
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initChart();
